@@ -1,7 +1,12 @@
+using LHPets.Models;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<Contexto>(options => options.UseMySql("server=localhost;database=LHPets;uid=root;pwd=@Root1", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.33-mysql")));
+
 
 var app = builder.Build();
 
