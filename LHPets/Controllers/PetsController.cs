@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LHPets.Models;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace LHPets.Controllers
 {
@@ -18,7 +19,8 @@ namespace LHPets.Controllers
             _context = context;
         }
 
-        // GET: Pets
+        // GET DonoNome
+       
         public async Task<IActionResult> Index()
         {
               return _context.Pet != null ? 
@@ -41,7 +43,18 @@ namespace LHPets.Controllers
                 return NotFound();
             }
 
-            return View(pet);
+
+            var cliente = await _context.Cliente.FindAsync(pet.DonoID);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+
+
+            pet.DonoNome = cliente.Nome;
+
+
+            return View(cliente);
         }
 
         // GET: Pets/Create
@@ -79,6 +92,7 @@ namespace LHPets.Controllers
             {
                 return NotFound();
             }
+
             return View(pet);
         }
 

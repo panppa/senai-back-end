@@ -26,6 +26,8 @@ namespace LHPets.Controllers
                           Problem("Entity set 'Contexto.Cliente'  is null.");
         }
 
+      
+
         // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id)
         {

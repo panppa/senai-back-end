@@ -22,7 +22,10 @@ namespace LHPets.Models
             [Display(Name = "Especie")]
             public string Especie { get; set; }
 
-            public Pet(int ID,int DonoID, string Nome, string Especie)
+            [Column("DonoNome")]
+            [Display(Name = "DonoNome")]
+            public string? DonoNome { get; set; }
+        public Pet(int ID,int DonoID, string Nome, string Especie)
             {
                 this.ID = ID;
                 this.Nome = Nome;
