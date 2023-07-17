@@ -21,12 +21,33 @@ namespace LHPets.Controllers
 
         // GET DonoNome
        
+    
         public async Task<IActionResult> Index()
         {
-              return _context.Pet != null ? 
-                          View(await _context.Pet.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Pet'  is null.");
+            if (_context.Pet != null)
+            {
+                var pets = await _context.Pet.ToListAsync();
+
+                foreach (var pet in pets)
+                {
+                    var cliente = await _context.Cliente.FindAsync(pet.DonoID);
+                    if (cliente == null)
+                    {
+                        return NotFound();
+                    }
+
+                    pet.DonoNome = cliente.Nome;
+
+                }
+
+                return View(pets);
+            }
+            else
+            {
+                return Problem("Entity set 'Contexto.Pet' is null.");
+            }
         }
+
 
         // GET: Pets/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -44,17 +65,17 @@ namespace LHPets.Controllers
             }
 
 
-            var cliente = await _context.Cliente.FindAsync(pet.DonoID);
-            if (cliente == null)
-            {
-                return NotFound();
-            }
+           var cliente = await _context.Cliente.FindAsync(pet.DonoID);
+           if (cliente == null)
+           {
+               return NotFound();
+           }
 
 
             pet.DonoNome = cliente.Nome;
 
 
-            return View(cliente);
+            return View(pet);
         }
 
         // GET: Pets/Create

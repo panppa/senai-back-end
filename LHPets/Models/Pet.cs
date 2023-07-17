@@ -25,15 +25,13 @@ namespace LHPets.Models
             [Column("DonoNome")]
             [Display(Name = "DonoNome")]
             public string? DonoNome { get; set; }
-        public Pet(int ID,int DonoID, string Nome, string Especie)
-            {
-                this.ID = ID;
-                this.Nome = Nome;
-                this.Especie = Especie;
-                this.DonoID = DonoID;   
-
-            }
-        //todo: consertar isso aqui
+        public Pet(int ID, int DonoID, string Nome, string Especie)
+        {
+            this.ID = ID;
+            this.Nome = Nome;
+            this.Especie = Especie;
+            this.DonoID = DonoID;
+        }
         public Pet()
         {
             this.ID = 333;

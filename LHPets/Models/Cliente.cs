@@ -27,7 +27,6 @@ namespace LHPets.Models
             this.CPF = CPF;
             this.Email = Email;
         }
-        //ta mt errado isso aqui pq to com mt sono //todo: fazer direito isso
         public Cliente()
         {
 
