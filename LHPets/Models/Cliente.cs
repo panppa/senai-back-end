@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LHPets.Models
@@ -11,7 +12,8 @@ namespace LHPets.Models
         public int ID { get; set; }
         [Column("Nome")]
         [Display(Name = "Nome")]
-        public string? Nome { get; set; }
+        public string Nome { get; set; } 
+
         [Column("CPF")]
         [Display(Name = "Cpf")]
         public string? CPF { get; set; }
@@ -24,6 +26,15 @@ namespace LHPets.Models
             this.Nome = Nome;
             this.CPF = CPF;
             this.Email = Email;
+        }
+        //ta mt errado isso aqui pq to com mt sono //todo: fazer direito isso
+        public Cliente()
+        {
+
+            this.ID = 333;
+            this.Nome = "";
+            this.CPF = "";
+            this.Email = ""; 
         }
     }
 }

@@ -41,6 +41,69 @@ namespace LHPets.Migrations
 
                     b.ToTable("Cliente");
                 });
+
+            modelBuilder.Entity("LHPets.Models.Fornecedor", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<string>("CNPJ")
+                        .HasColumnType("longtext")
+                        .HasColumnName("Cnpj");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext")
+                        .HasColumnName("Email");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext")
+                        .HasColumnName("Nome");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Fornecedor");
+                });
+
+            modelBuilder.Entity("LHPets.Models.Pet", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    b.Property<int>("DonoID")
+                        .HasColumnType("int")
+                        .HasColumnName("DonoID");
+
+                    b.Property<string>("Especie")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("Especie");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("Nome");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("DonoID");
+
+                    b.ToTable("Pet");
+                });
+
+            modelBuilder.Entity("LHPets.Models.Pet", b =>
+                {
+                    b.HasOne("LHPets.Models.Cliente", "Dono")
+                        .WithMany()
+                        .HasForeignKey("DonoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dono");
+                });
 #pragma warning restore 612, 618
         }
     }

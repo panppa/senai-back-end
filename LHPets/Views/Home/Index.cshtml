@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<!--
+
 
 <div class="content text-center">
     <h1 class="display-4">Sistema de controle
@@ -65,19 +67,18 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Raca</th>
+                    <th scope="col">Especie</th>
                     <th scope="col">Dono</th>
                 </tr>
             </thead>
-            @foreach (var pet in ViewBag.listPets)
-            {
+            
                 <tr>
-                    <td scope="row">@pet.ID</td>
-                    <td scope="row">@pet.Nome</td>
-                    <td scope="row">@pet.Raca</td>
-                    <td scope="row">@pet.Dono.Nome</td>
+                    <td scope="row">pet.ID</td>
+                    <td scope="row">pet.Nome</td>
+                    <td scope="row">pet.Especie</td>
+                    <td scope="row">pet.Dono.Nome</td>
                 </tr>
-            }
+            
         </table>
     </div>
 
@@ -118,3 +119,4 @@
        
     
 </div>
+-->

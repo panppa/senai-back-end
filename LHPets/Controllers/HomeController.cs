@@ -51,7 +51,7 @@ namespace LHPets.Controllers
             ViewBag.listClientes = listClientes;
 
             //lista de pets
-
+            /*
             List<Pet> listPets = new();
 
             Pet novoPet1 = new Pet(1, cliente1, "Pitchulinha", "Cachorro");
@@ -88,7 +88,7 @@ namespace LHPets.Controllers
             listPets.Add(novoPet10);
 
             ViewBag.listPets = listPets;
-
+            */
             //lista de Fornecedores
 
             List<Fornecedor> listFornecedor = new();
